@@ -140,7 +140,7 @@ const QuizPage = () => {
 
       <div className="quiz-navbar d-flex justify-content-between align-items-center mb-4">
         <div>
-          <button onClick={callAFriend} disabled={!lifelines.callAFriend}>📞 Call a Friend</button>
+          <button onClick={callAFriend} disabled={!lifelines.callAFriend}>📞 Ask girlie </button>
           <button onClick={useFiftyFifty} disabled={!lifelines.fiftyFifty}> 50/50</button>
         </div>
         <div>⭐ Points: {score}</div>
