@@ -23,9 +23,11 @@ const AvatarSetup = () => {
       alert('Pick an avatar and name her first!');
       return;
     }
+    const selectedAvatarData = avatars.find((a) => a.id === selectedAvatar);
 
     const profile = {
       avatarId: selectedAvatar,
+      avatarSrc: selectedAvatarData.src,
       name: avatarName,
     };
 
@@ -42,13 +44,16 @@ const AvatarSetup = () => {
 
       <div className="avatar-gallery">
         {avatars.map((avatar) => (
-          <AvatarCard
-            key={avatar.id}
+          <div className="col-4 col-md-2" key={avatar.id}>
+<AvatarCard
+            
             id={avatar.id}
             src={avatar.src}
             selected={selectedAvatar === avatar.id}
             onSelect={() => setSelectedAvatar(avatar.id)}
           />
+          </div>
+          
         ))}
       </div>
 
