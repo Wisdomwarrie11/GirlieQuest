@@ -6,6 +6,7 @@ import { Modal, Button } from 'react-bootstrap';
 import correctSound from '../assets/sounds/correct.mp3';
 import wrongSound from '../assets/sounds/wrong.mp3';
 import bgMusic from '../assets/sounds/bg.mp3';
+import confetti from 'canvas-confetti'
 
 const QuizPage = () => {
   const navigate = useNavigate();
@@ -62,7 +63,13 @@ const QuizPage = () => {
     if (isCorrect) {
       correctAudio.current.play().catch(() => {});
       setScore(score + 1);
-    } else {
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    }
+     else {
       wrongAudio.current.play().catch(() => {});
     }
   };
@@ -131,8 +138,8 @@ const QuizPage = () => {
 
   // Congratulatory message based on the selected language
   const congratsMessage = language === 'english' 
-    ? "You got all the questions correct! You've earned a prize and unlocked the next level."
-    : "You don do am! You answer all di questions correct! You don win prize and unlock di next level.";
+    ? "You got all the questions correct! You've earned a prize. Redeem a pack of Vivo sanitary pad from Livewell Clinic with the voucher code; 1298AF2."
+    : "You don do am! You answer all di questions correct! You don win something. collect one pack of Vivo sanitary pad for Livewell Clinic with this voucher code; 1298AF2..";
 
   return (
     <div className="quiz-container">
@@ -140,8 +147,8 @@ const QuizPage = () => {
 
       <div className="quiz-navbar d-flex justify-content-between align-items-center mb-4">
         <div>
-          <button onClick={callAFriend} disabled={!lifelines.callAFriend}>📞 Ask girlie </button>
-          <button onClick={useFiftyFifty} disabled={!lifelines.fiftyFifty}> 50/50</button>
+          <button  onClick={callAFriend} disabled={!lifelines.callAFriend}>📞Get hint</button>
+          <button style={{marginTop: '20px'}}  onClick={useFiftyFifty} disabled={!lifelines.fiftyFifty}> 50/50</button>
         </div>
         <div>⭐ Points: {score}</div>
         <div className="d-flex align-items-center gap-2">
@@ -192,7 +199,9 @@ const QuizPage = () => {
             <div
               key={index}
               className={`option ${selectedOption === index ? (index === question.answer ? 'correct' : 'incorrect') : ''}`}
-              onClick={() => handleOptionSelect(index)}
+              onClick={() =>{ 
+               if (!questionAnswered) handleOptionSelect(index) 
+              }}
             >
               {option}
             </div>
