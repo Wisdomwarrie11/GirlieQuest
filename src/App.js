@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import AvatarSetup from './pages/AvatarSetup';
+import LevelSelect from './pages/LevelSelect';
+import QuizPage from './pages/QuizPage'; // import the QuizPage component
+import SoundManager from './components/SoundManager';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{backgroundColor: 'rgb(220, 175, 235)', height: '100%'}}>
+   
+      <Router>
+      <Navbar />
+        <Routes>
+          <Route path="/" element={<AvatarSetup />} />
+          <Route path="/levels" element={<LevelSelect />} />
+          <Route path="/quiz/:levelId" element={<QuizPage />} /> {/* Add this route */}
+        </Routes>
+      </Router>
     </div>
   );
 }

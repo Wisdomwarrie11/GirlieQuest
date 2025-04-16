@@ -1,0 +1,87 @@
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../styles/LevelSelect.css';
+
+const levels = [
+  { id: 1, name: 'Miss Clarity', topic: 'Improper Abortion' },
+  { id: 2, name: 'Lady Secure', topic: 'Contraceptive Use' },
+  { id: 3, name: 'Queen Purity', topic: 'Sexual Abstinence' },
+  { id: 4, name: 'Bold Bella', topic: 'Gender-Based Violence' },
+  { id: 5, name: 'Fierce Faith', topic: 'Sexual Abuse Awareness' },
+  { id: 6, name: 'Smart Shola', topic: 'Period & Puberty' },
+  { id: 7, name: 'Safe Simi', topic: 'Consent & Boundaries' },
+  { id: 8, name: 'Caring Chioma', topic: 'Relationships' },
+  { id: 9, name: 'Bright Becky', topic: 'Peer Pressure' },
+  { id: 10, name: 'Confident Clara', topic: 'SRH Self-Advocacy' },
+];
+
+const LevelSelect = () => {
+  const navigate = useNavigate();
+  const [profile, setProfile] = useState(null);
+  const [unlockedLevels, setUnlockedLevels] = useState([1]);
+  const [scores, setScores] = useState({});
+  const [totalScore, setTotalScore] = useState(0);
+
+  useEffect(() => {
+    const savedProfile = JSON.parse(localStorage.getItem('girlieProfile'));
+    const progress = JSON.parse(localStorage.getItem('girlieProgress')) || [1];
+    const savedScores = JSON.parse(localStorage.getItem('girlieScores')) || {};
+
+    if (!savedProfile) {
+      navigate('/');
+    } else {
+      setProfile(savedProfile);
+      setUnlockedLevels(progress);
+      setScores(savedScores);
+
+      const total = Object.values(savedScores).reduce((acc, score) => acc + score, 0);
+      setTotalScore(total);
+    }
+  }, []);
+
+  const handleLevelClick = (levelId) => {
+    if (unlockedLevels.includes(levelId)) {
+      navigate(`/quiz/${levelId}`);
+    } else {
+      alert("Finish the previous level before this is unlocked 💅");
+    }
+  };
+
+  return (
+    <div  style={{paddingTop: '100px', paddingBottom: '100px', color: 'white'}} className="container mt-4 level">
+      {profile && (
+        <>
+          <div className="text-center mb-4">
+            <img src={profile.avatarSrc} alt="avatar" width="150px" height= "150px" />
+            <h4 className="mt-2">{profile.name} 💖</h4>
+            <p>Language: {profile.language}</p>
+            <p style={{color: 'white'}} className="text-muted">Total Score: ⭐ {totalScore} / {levels.length * 10}</p>
+          </div>
+
+          <h3 className="text-center mb-3">Choose a Girlie Level</h3>
+
+          <div className="row">
+            {levels.map((level) => (
+              <div className="col-6 col-md-4 mb-3" key={level.id}>
+                <div
+                  className={`level-card p-3 shadow-sm text-center ${unlockedLevels.includes(level.id) ? '' : 'locked'}`}
+                  onClick={() => handleLevelClick(level.id)}
+                >
+                  <h5>{level.name}</h5>
+                  <p>{level.topic}</p>
+                  {unlockedLevels.includes(level.id) ? (
+                    <p className="score">⭐ {scores[level.id] || 0}/10</p>
+                  ) : (
+                    <span className="lock-icon">🔒</span>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
+
+export default LevelSelect;

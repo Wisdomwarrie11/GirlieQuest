@@ -1,0 +1,130 @@
+.quiz-container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .quiz-navbar {
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+  }
+  
+  .quiz-navbar button {
+    margin-right: 10px;
+    border: none;
+    padding: 8px 14px;
+    background-color: #ff6f00;
+    color: white;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .quiz-navbar button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .quiz-navbar button:hover:not(:disabled) {
+    background-color: #e65c00;
+  }
+  
+  .quiz-navbar select {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+  }
+  
+  .avatar-img {
+    border: 4px solid #007bff;
+    object-fit: cover;
+    box-shadow: 0 0 12px rgba(0, 123, 255, 0.4);
+  }
+  
+  .question-container h3 {
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #333;
+    text-align: center;
+  }
+  
+  .options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .option {
+    background-color: #f1f1f1;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-align: center;
+    font-weight: 500;
+    border: 2px solid transparent;
+  }
+  
+  .option:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .option.correct {
+    background-color: #d4edda;
+    border-color: #28a745;
+    color: #155724;
+  }
+  
+  .option.incorrect {
+    background-color: #f8d7da;
+    border-color: #dc3545;
+    color: #721c24;
+  }
+  
+  .next-button {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .next-button button {
+    padding: 10px 24px;
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .next-button button:hover {
+    background-color: #0056b3;
+  }
+  
+  .fade-in {
+    opacity: 1;
+    transition: opacity 0.4s ease-in;
+  }
+  
+  .fade-out {
+    opacity: 0;
+    transition: opacity 0.4s ease-out;
+  }
+  
+  .progress {
+    height: 10px;
+    background-color: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  
+  .progress-bar {
+    height: 100%;
+    background-color: #28a745;
+    transition: width 0.4s ease;
+  }
+  

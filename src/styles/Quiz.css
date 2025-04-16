@@ -1,0 +1,13 @@
+.quiz-container .card {
+    border-radius: 14px;
+    background: #fff4f9;
+  }
+  .quiz-container .btn-outline-primary {
+    border-radius: 10px;
+    font-weight: bold;
+  }
+  .quiz-container .lifelines button {
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  

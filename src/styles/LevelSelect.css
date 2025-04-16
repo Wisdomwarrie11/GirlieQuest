@@ -1,0 +1,83 @@
+/* LevelSelect.css */
+
+.level{
+  /* background-image: url('../assets/green.jpg'); */
+ 
+}
+.container {
+  max-width: 960px;
+}
+
+.level-card {
+  background: #fff;
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  border: 2px solid #f8f9fa;
+  position: relative;
+  min-height: 150px;
+}
+
+.level-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  border-color: #ff6b81;
+}
+.color{
+  color: #600ef9;
+}
+
+.level-card.locked {
+  opacity: 0.6;
+  pointer-events: none;
+  background: #f8f9fa;
+  border: 2px dashed #ccc;
+}
+
+.level-card h5 {
+  color: #ff6b81;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.level-card p {
+  margin: 0.3rem 0;
+}
+
+.level-card .score {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #28a745;
+}
+
+.lock-icon {
+  font-size: 1.5rem;
+  color: #888;
+}
+
+img[alt='avatar'] {
+  border-radius: 50%;
+  border: 3px solid #ff6b81;
+  box-shadow: 0 5px 15px rgba(255, 107, 129, 0.2);
+}
+
+h3 {
+  font-weight: bold;
+  color: white;
+}
+
+h4 {
+  color: #ff6b81;
+  font-weight: bold;
+}
+
+.text-muted {
+  font-size: 0.9rem;
+}
+
+@media (max-width: 576px) {
+  .level-card {
+    min-height: 120px;
+    padding: 1rem;
+  }
+}
