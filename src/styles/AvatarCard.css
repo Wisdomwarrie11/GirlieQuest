@@ -9,12 +9,12 @@
 .avatar-card {
   border: 2px solid #ccc;
   border-radius: 20px;
-  padding: 15px;
+  padding: 12px;
   cursor: pointer;
   box-shadow: 0 0 8px #ccc;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 200px;
-  height: 200px;
+  width: 120px;
+  height: 120px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,7 +31,7 @@
 
 .avatar-img {
   width: 100%;
-  height: 110%;
+  height: 100%;
   object-fit: cover;
   border-radius: 50%;
 }
