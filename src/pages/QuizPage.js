@@ -208,7 +208,7 @@ const [isPaused, setIsPaused] = useState(false);
           <button  onClick={callAFriend} disabled={!lifelines.callAFriend}>Hint</button>
           <button style={{marginTop: '20px'}}  onClick={useFiftyFifty} disabled={!lifelines.fiftyFifty}> 50/50</button>
         </div>
-        <div style={{marginRight: '20px'}}>⭐ Points: {score}</div>
+        <div style={{marginRight: '20px'}}> {score}⭐</div>
         <div className="d-flex align-items-center gap-2">
           <select id="language" value={language} onChange={handleLanguageChange}>
             <option value="english">English</option>
