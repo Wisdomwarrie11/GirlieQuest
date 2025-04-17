@@ -13,8 +13,8 @@
   cursor: pointer;
   box-shadow: 0 0 8px #ccc;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
