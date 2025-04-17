@@ -15,7 +15,7 @@ const Navbar = () => {
       <span className="navbar-brand fw-bold text-white"><button className="btn btn-outline-light btn-sm" onClick={() => navigate('/')}>GirlieQuest</button></span>
       <div className="ms-auto d-flex gap-3">
         <button className="btn btn-outline-light btn-sm" onClick={() => navigate('/levels')}>
-          🔙 Back to Levels
+          🔙Levels
         </button>
         
         <button className="btn btn-outline-light btn-sm" onClick={() => navigate('/periodcal')}>

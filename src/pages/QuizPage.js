@@ -74,12 +74,12 @@ const [isPaused, setIsPaused] = useState(false);
     }
   }, [levelId, navigate]);
 
-  useEffect(() => {
-    bgAudio.current.loop = true;
-    bgAudio.current.volume = 0.3;
-    bgAudio.current.play().catch(() => {});
-    return () => bgAudio.current.pause();
-  }, []);
+  // useEffect(() => {
+  //   bgAudio.current.loop = true;
+  //   bgAudio.current.volume = 0.3;
+  //   bgAudio.current.play().catch(() => {});
+  //   return () => bgAudio.current.pause();
+  // }, []);
 
   const handleLanguageChange = (event) => {
     setLanguage(event.target.value);
@@ -205,7 +205,7 @@ const [isPaused, setIsPaused] = useState(false);
 
       <div className="quiz-navbar d-flex justify-content-between align-items-center mb-4">
         <div>
-          <button  onClick={callAFriend} disabled={!lifelines.callAFriend}>📞Get hint</button>
+          <button  onClick={callAFriend} disabled={!lifelines.callAFriend}>Hint</button>
           <button style={{marginTop: '20px'}}  onClick={useFiftyFifty} disabled={!lifelines.fiftyFifty}> 50/50</button>
         </div>
         <div>⭐ Points: {score}</div>
@@ -214,14 +214,14 @@ const [isPaused, setIsPaused] = useState(false);
             <option value="english">English</option>
             <option value="pidgin">Pidgin</option>
           </select>
-          <button onClick={() => {
+          {/* <button onClick={() => {
             setIsMuted(!isMuted);
             bgAudio.current.muted = !isMuted;
             correctAudio.current.muted = !isMuted;
             wrongAudio.current.muted = !isMuted;
           }}>
             {isMuted ? '🔇' : '🔊'}
-          </button>
+          </button> */}
         </div>
       </div>
 
