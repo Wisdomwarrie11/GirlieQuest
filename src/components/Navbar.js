@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top px-3">
-      <span className="navbar-brand fw-bold text-white"><button onClick={() => navigate('/')}>GirlieQuest</button></span>
+      <span className="navbar-brand fw-bold text-white"><button className="btn btn-outline-light btn-sm" onClick={() => navigate('/')}>GirlieQuest</button></span>
       <div className="ms-auto d-flex gap-3">
         <button className="btn btn-outline-light btn-sm" onClick={() => navigate('/levels')}>
           🔙 Back to Levels
