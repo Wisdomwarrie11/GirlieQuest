@@ -48,16 +48,16 @@ const LevelSelect = () => {
   };
 
   return (
-    <div  style={{paddingTop: '100px', paddingBottom: '100px', color: 'black'}} className="container mt-4 level">
+    <div  style={{paddingTop: '100px', paddingBottom: '100px', color: 'black', fontFamily: 'sans-serif'}} className="container mt-4 level">
       {profile && (
         <>
           <div className="text-center mb-4">
             <img src={profile.avatarSrc} alt="avatar" width="150px" height= "150px" />
-            <h4 className="mt-2">{profile.name} 💖</h4>
+            <h4 style={{fontFamily: 'sans-serif'}} className="fw-bold mt-2"> My name is {profile.name}💖<br /> I am from {profile.state}</h4>
             <p style={{color: 'black'}} className="text-muted">Total Score: ⭐ {totalScore} / {levels.length * 10}</p>
           </div>
 
-          <h3 className="fw-bold text-center mb-3">Choose a Girlie Level</h3>
+          <h3 style={{ fontFamily: 'sans-serif'}} className="fw-bold text-center mb-3">Choose a Girlie Level</h3>
 
           <div className="row">
             {levels.map((level) => (

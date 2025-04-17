@@ -2,25 +2,35 @@ import React, { useState } from 'react';
 import AvatarCard from '../components/AvatarCard';
 import { useNavigate } from 'react-router-dom';
 import '../styles/AvatarSetup.css';
-import avatar1 from '../assets/avatar1.jpg';
-import avatar2 from '../assets/avatar2.jpg';
-import avatar3 from '../assets/avatar1.jpg'; // You can use more unique avatars here
-
+import avatar1 from '../assets/Africanbeauty.jpg'
+import avatar2 from '../assets/beauty.jpg'
+import avatar3 from '../assets/Africangirl.jpg'; 
+import avatar4 from '../assets/Blackbeauty.jpg'
 const AvatarSetup = () => {
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [avatarName, setAvatarName] = useState('');
   const navigate = useNavigate();
+  const [selectedState, setSelectedState] = useState('');
 
   const avatars = [
     { id: 1, src: avatar1 },
     { id: 2, src: avatar2 },
     { id: 3, src: avatar3 },
+    { id: 1, src: avatar4 },
+  ];
+
+  const nigerianStates = [
+    "Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa", "Benue", 
+    "Borno", "Cross River", "Delta", "Ebonyi", "Edo", "Ekiti", "Enugu", "FCT",
+    "Gombe", "Imo", "Jigawa", "Kaduna", "Kano", "Katsina", "Kebbi", "Kogi", 
+    "Kwara", "Lagos", "Nasarawa", "Niger", "Ogun", "Ondo", "Osun", "Oyo", 
+    "Plateau", "Rivers", "Sokoto", "Taraba", "Yobe", "Zamfara"
   ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!selectedAvatar || !avatarName) {
-      alert('Pick an avatar and name her first!');
+    if (!selectedAvatar || !avatarName || !selectedState) {
+      alert('Ooops, your setup is not complete!');
       return;
     }
     const selectedAvatarData = avatars.find((a) => a.id === selectedAvatar);
@@ -29,17 +39,20 @@ const AvatarSetup = () => {
       avatarId: selectedAvatar,
       avatarSrc: selectedAvatarData.src,
       name: avatarName,
+      state: selectedState,
     };
 
     localStorage.setItem('girlieProfile', JSON.stringify(profile));
     navigate('/levels');
   };
 
+  
+
   return (
-    <div className="avatar-setup-wrapper">
+    <div style={{fontFamily: 'sans-serif'}} className="avatar-setup-wrapper">
       <div className="setup-header text-center">
-        <h1>🎀 Welcome to Girlie Quest 🎀</h1>
-        <p>Choose your avatar and name her to begin your journey!</p>
+       <strong> <h1 className='fw-bold' style={{fontFamily: 'sans-serif'}}>🎀 Welcome to Girlie Quest 🎀</h1></strong>
+        <p className='fw-bold' style={{fontFamily: 'sans-serif'}}>Choose your Girlie and name her to begin your Quest!</p>
       </div>
 
       <div className="avatar-gallery">
@@ -57,7 +70,7 @@ const AvatarSetup = () => {
         ))}
       </div>
 
-      <form onSubmit={handleSubmit} className="avatar-form text-center">
+      <form style={{fontFamily: 'sans-serif'}} onSubmit={handleSubmit} className="avatar-form text-center">
         <input
           type="text"
           placeholder="Give her a name 💕"
@@ -65,7 +78,19 @@ const AvatarSetup = () => {
           value={avatarName}
           onChange={(e) => setAvatarName(e.target.value)}
         />
-        <button className="start-button">Start the Adventure 🚀</button>
+        <select
+          className="form-select mb-3"
+          value={selectedState}
+          onChange={(e) => setSelectedState(e.target.value)}
+        >
+          <option value="">Select Your State 🌍</option>
+          {nigerianStates.map((state) => (
+            <option key={state} value={state}>
+              {state}
+            </option>
+          ))}
+        </select>
+        <button style={{fontFamily: 'sans-serif'}} className="fw-bold start-button">Start your quest🚀</button>
       </form>
     </div>
   );

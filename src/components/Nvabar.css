@@ -4,4 +4,6 @@
   .navbar-brand {
     color: #FFA500 !important; /* Deep orange */
   }
-  
+  .color{
+    color: rgb(220, 175, 235);
+  }

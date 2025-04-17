@@ -192,8 +192,8 @@ const QuizPage = () => {
       )}
 
       {/* Question Block with Animation */}
-      <div className={`question-container ${fade ? 'fade-out' : 'fade-in'}`}>
-        <h3>{question.question}</h3>
+      <div  className={`question-container ${fade ? 'fade-out' : 'fade-in'}`}>
+        <h3 style={{ fontFamily: 'sans-serif'}}>{question.question}</h3>
         <div className="options">
           {question.options.map((option, index) => (
             <div
