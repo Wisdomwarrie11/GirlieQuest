@@ -7,7 +7,7 @@ export const useUserProgress = () => useContext(UserProgressContext);
 export const UserProgressProvider = ({ children }) => {
   const [progress, setProgress] = useState({
     unlockedLevel: 1,
-    scores: {}, // e.g. { 1: 8, 2: 6 }
+    scores: {}, 
     totalScore: 0,
   });
 

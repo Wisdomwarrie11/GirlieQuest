@@ -1,7 +1,7 @@
 import React from 'react';
 
 const InviteFriend = () => {
-  const inviteLink = `${window.location.origin}/join-quiz?referral=girlie123`; // You can customize the referral code later!
+  const inviteLink = `${window.location.origin}/join-quiz?referral=girlie123`; 
 
   const copyLink = () => {
     navigator.clipboard.writeText(inviteLink);

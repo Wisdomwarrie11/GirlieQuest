@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { quizData } from './Dataquiz';
-import '../styles/QuizPage.css';  // Assuming you add the styles here
+import '../styles/QuizPage.css';  
 
 const QuizPage = () => {
   const navigate = useNavigate();
   const { levelId } = useParams();
   const [quiz, setQuiz] = useState(null);
-  const [language, setLanguage] = useState('english'); // Default language
+  const [language, setLanguage] = useState('english'); 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [lifelines, setLifelines] = useState({ callAFriend: true, fiftyFifty: true });
@@ -19,14 +19,14 @@ const QuizPage = () => {
     if (currentQuiz) {
       setQuiz(currentQuiz);
     } else {
-      navigate('/levels'); // Redirect if quiz not found
+      navigate('/levels'); 
     }
   }, [levelId, navigate]);
 
   const handleLanguageChange = (event) => {
     setLanguage(event.target.value);
-    setCurrentQuestionIndex(0); // Reset question when language is changed
-    setQuestionAnswered(false); // Reset the answer state
+    setCurrentQuestionIndex(0); 
+    setQuestionAnswered(false); 
   };
 
   const handleOptionSelect = (index) => {
@@ -38,13 +38,13 @@ const QuizPage = () => {
   };
 
   const useFiftyFifty = () => {
-    // Logic to remove two wrong options
+
     if (lifelines.fiftyFifty) {
       const question = quiz.questions[language][currentQuestionIndex];
       const correctOption = question.answer;
       const newOptions = question.options.filter((_, idx) => idx === correctOption || idx === Math.floor(Math.random() * 3));
       setLifelines({ ...lifelines, fiftyFifty: false });
-      // update question with 50/50 options
+     
       setQuiz({
         ...quiz,
         questions: {
@@ -60,7 +60,7 @@ const QuizPage = () => {
   };
 
   const callAFriend = () => {
-    // Logic for Call a Friend (provide a hint or a hint message)
+    
     if (lifelines.callAFriend) {
       alert(quiz.questions[language][currentQuestionIndex].hint);
       setLifelines({ ...lifelines, callAFriend: false });

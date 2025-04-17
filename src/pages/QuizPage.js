@@ -91,7 +91,7 @@ const [isPaused, setIsPaused] = useState(false);
     if (!question) return;
     
     const utterance = new SpeechSynthesisUtterance(`${question.question}. Options: ${question.options.join(", ")}`);
-    utterance.lang = 'en-NG'; // Nigerian English if available
+    utterance.lang = 'en-NG';
     if (selectedVoice) {
       utterance.voice = selectedVoice;
     }
@@ -174,19 +174,19 @@ const [isPaused, setIsPaused] = useState(false);
   const finishQuiz = () => {
     setQuizFinished(true);
     if (score === quiz.questions[language].length) {
-      // All answers correct, unlock next level
-      setShowCongratsModal(true); // Show modal
+      
+      setShowCongratsModal(true); 
     } else {
       setTimeout(() => {
         alert('Oops! You didn\'t get all the answers right. Please try again from the beginning.');
-        navigate(`/quiz/${levelId}`); // Restart the quiz
+        navigate(`/quiz/${levelId}`); 
       }, 2000);
     }
   };
 
   const handleCloseModal = () => {
     setShowCongratsModal(false);
-    navigate(`/nextLevel/${parseInt(levelId) + 1}`); // Assuming next level URL is `nextLevel/{levelId + 1}`
+    navigate(`/nextLevel/${parseInt(levelId) + 1}`); 
   };
 
   if (!quiz) return <div>Loading...</div>;
@@ -194,7 +194,7 @@ const [isPaused, setIsPaused] = useState(false);
   const question = quiz.questions[language][currentQuestionIndex];
   const avatar = quiz.name;
 
-  // Congratulatory message based on the selected language
+ 
   const congratsMessage = language === 'english' 
     ? "You got all the questions correct! You've earned a prize. Redeem a pack of Vivo sanitary pad from Livewell Clinic with the voucher code; 1298AF2."
     : "You don do am! You answer all di questions correct! You don win one pack of Vivo sanitary pad. Collect am for Livewell Clinic with this voucher code; 1298AF2..";
@@ -208,7 +208,7 @@ const [isPaused, setIsPaused] = useState(false);
           <button  onClick={callAFriend} disabled={!lifelines.callAFriend}>Hint</button>
           <button style={{marginTop: '20px'}}  onClick={useFiftyFifty} disabled={!lifelines.fiftyFifty}> 50/50</button>
         </div>
-        <div>⭐ Points: {score}</div>
+        <div style={{marginRight: '20px'}}>⭐ Points: {score}</div>
         <div className="d-flex align-items-center gap-2">
           <select id="language" value={language} onChange={handleLanguageChange}>
             <option value="english">English</option>

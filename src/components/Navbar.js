@@ -1,12 +1,12 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import './Nvabar.css'; // Optional if you want custom styles
+import './Nvabar.css'; 
 
 const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Pages where navbar should NOT show (like home/login etc)
+  
   const hideOnPaths = ['/', '/login'];
   if (hideOnPaths.includes(location.pathname)) return null;
 
