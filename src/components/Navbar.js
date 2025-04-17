@@ -20,8 +20,8 @@ const Navbar = () => {
         <button className="btn btn-outline-light btn-sm" onClick={() => navigate('/avatar-setup')}>
           📝 Edit Profile
         </button>
-        <button className="btn btn-outline-light btn-sm" onClick={() => navigate('/srh-info')}>
-          ❤️ Learn About SRH
+        <button className="btn btn-outline-light btn-sm" onClick={() => navigate('/periodcal')}>
+          ❤️ Period Calculator
         </button>
       </div>
     </nav>

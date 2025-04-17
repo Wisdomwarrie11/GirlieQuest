@@ -31,80 +31,112 @@ const MenstrualBot = () => {
     if (!nextPeriodDate) return '';
 
     if (language === 'pidgin') {
-      return `Your next period fit start around ${nextPeriodDate}. Make you ready, ok? 💖`;
+      return `👑 Your next period fit start around ${nextPeriodDate}. Make you ready, ok? 💖`;
     } else {
-      return `Your next period will likely start on ${nextPeriodDate}. Stay prepared! 🌸`;
+      return `🌸 Your next period will likely start on ${nextPeriodDate}. Stay prepared!`;
     }
   };
 
   return (
     <div style={{
-      backgroundColor: '#c062df',
+      background: 'linear-gradient(135deg, #f9d7f5, #c062df)',
+      minHeight: '80vh',
+      marginTop: '50px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
       padding: '20px',
-      borderRadius: '12px',
-      marginTop: '30px',
-      textAlign: 'center',
     }}>
-      <h4 className='fw-bold'  style={{fontFamily:'sans-serif'}}> Menstrual Period Calculator</h4>
-
-      <div style={{ marginBottom: '10px' }}>
-        <label>Pick Your Last Period Date:</label><br />
-        <input
-          type="date"
-          value={lmpDate}
-          onChange={(e) => setLmpDate(e.target.value)}
-          style={{
-            marginTop: '8px',
-            padding: '8px',
-            borderRadius: '8px',
-            border: '1px solid #ccc'
-          }}
-        />
-      </div>
-
-      <div style={{ marginBottom: '10px' }}>
-        <label>Select Language:</label><br />
-        <select
-          value={language}
-          onChange={(e) => setLanguage(e.target.value)}
-          style={{
-            marginTop: '8px',
-            padding: '8px',
-            borderRadius: '8px',
-            border: '1px solid #ccc'
-          }}
-        >
-          <option value="english">English</option>
-          <option value="pidgin">Pidgin</option>
-        </select>
-      </div>
-
-      <button
-        onClick={calculateNextPeriod}
-        style={{
-          backgroundColor: '#ff69b4',
-          color: 'white',
-          border: 'none',
-          padding: '10px 20px',
-          borderRadius: '20px',
-          cursor: 'pointer',
-          fontWeight: 'bold',
-          marginBottom: '10px'
-        }}
-      >
-        🧮 Calculate
-      </button>
-
-      {nextPeriodDate && (
-        <div style={{
-          marginTop: '15px',
-          backgroundColor: '#fff0f5',
-          padding: '10px',
-          borderRadius: '10px'
+      <div style={{
+        backgroundColor: '#fff',
+        padding: '30px 20px',
+        borderRadius: '20px',
+        width: '100%',
+        maxWidth: '400px',
+        boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
+        textAlign: 'center',
+        fontFamily: `'Poppins', sans-serif`,
+        animation: 'fadeIn 1s ease-in-out',
+      }}>
+        <h2 style={{
+          color: '#c062df',
+          marginBottom: '20px',
+          fontWeight: '700'
         }}>
-          {getBotMessage()}
+          🩷 Menstrual Period Calculator
+        </h2>
+
+        <div style={{ marginBottom: '20px', textAlign: 'left' }}>
+          <label style={{ fontWeight: '500' }}>Pick Your Last Period Date:</label>
+          <input
+            type="date"
+            value={lmpDate}
+            onChange={(e) => setLmpDate(e.target.value)}
+            style={{
+              marginTop: '8px',
+              width: '100%',
+              padding: '10px',
+              borderRadius: '10px',
+              border: '1px solid #ddd',
+              fontSize: '14px',
+              marginTop: '5px'
+            }}
+          />
         </div>
-      )}
+
+        <div style={{ marginBottom: '20px', textAlign: 'left' }}>
+          <label style={{ fontWeight: '500' }}>Select Language:</label>
+          <select
+            value={language}
+            onChange={(e) => setLanguage(e.target.value)}
+            style={{
+              marginTop: '8px',
+              width: '100%',
+              padding: '10px',
+              borderRadius: '10px',
+              border: '1px solid #ddd',
+              fontSize: '14px'
+            }}
+          >
+            <option value="english">English</option>
+            <option value="pidgin">Pidgin</option>
+          </select>
+        </div>
+
+        <button
+          onClick={calculateNextPeriod}
+          style={{
+            background: 'linear-gradient(135deg, #ff69b4, #c062df)',
+            color: 'white',
+            border: 'none',
+            padding: '12px 25px',
+            borderRadius: '30px',
+            cursor: 'pointer',
+            fontSize: '16px',
+            fontWeight: 'bold',
+            marginTop: '10px',
+            transition: 'background 0.3s',
+          }}
+          onMouseOver={(e) => e.target.style.background = 'linear-gradient(135deg, #c062df, #ff69b4)'}
+          onMouseOut={(e) => e.target.style.background = 'linear-gradient(135deg, #ff69b4, #c062df)'}
+        >
+          🧮 Calculate
+        </button>
+
+        {nextPeriodDate && (
+          <div style={{
+            marginTop: '25px',
+            backgroundColor: '#ffe4f2',
+            padding: '15px',
+            borderRadius: '15px',
+            color: '#7d3570',
+            fontWeight: '600',
+            animation: 'fadeIn 1s ease-in-out',
+          }}>
+            {getBotMessage()}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

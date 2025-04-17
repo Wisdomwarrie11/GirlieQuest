@@ -4,6 +4,7 @@ import LevelSelect from './pages/LevelSelect';
 import QuizPage from './pages/QuizPage'; // import the QuizPage component
 import SoundManager from './components/SoundManager';
 import Navbar from './components/Navbar';
+import MenstrualBot from './pages/MenstrualBot';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Navbar />
         <Routes>
           <Route path="/" element={<AvatarSetup />} />
+          <Route path="/periodcal" element={<MenstrualBot />} />
           <Route path="/levels" element={<LevelSelect />} />
           <Route path="/quiz/:levelId" element={<QuizPage />} /> {/* Add this route */}
         </Routes>

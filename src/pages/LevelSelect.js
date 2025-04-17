@@ -80,7 +80,6 @@ const LevelSelect = () => {
             ))}
           </div>
 
-          <MenstrualBot />
 <InviteFriend />
 
         </>
