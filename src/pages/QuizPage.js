@@ -6,10 +6,14 @@ import { Modal, Button } from 'react-bootstrap';
 import correctSound from '../assets/sounds/correct.mp3';
 import wrongSound from '../assets/sounds/wrong.mp3';
 import bgMusic from '../assets/sounds/bg.mp3';
-import confetti from 'canvas-confetti'
+import confetti from 'canvas-confetti';
+
+
 
 const QuizPage = () => {
   const navigate = useNavigate();
+  const [voices, setVoices] = useState([]);
+const [selectedVoice, setSelectedVoice] = useState(null);
   const { levelId } = useParams();
   const [quiz, setQuiz] = useState(null);
   const [language, setLanguage] = useState('english');
@@ -26,12 +30,40 @@ const QuizPage = () => {
   const bgAudio = useRef(new Audio(bgMusic));
   const correctAudio = useRef(new Audio(correctSound));
   const wrongAudio = useRef(new Audio(wrongSound));
+  const [isSpeaking, setIsSpeaking] = useState(false);
+const [isPaused, setIsPaused] = useState(false);
+
+  
+  const currentQuestion = quizData[currentQuestionIndex];
 
   useEffect(() => {
     const savedProfile = JSON.parse(localStorage.getItem('girlieProfile'));
     if (!savedProfile) navigate('/');
     setProfile(savedProfile);
   }, [navigate]);
+
+  useEffect(() => {
+    const loadVoices = () => {
+      const availableVoices = window.speechSynthesis.getVoices();
+      const femaleVoices = availableVoices.filter(voice => 
+        voice.name.toLowerCase().includes('female') || 
+        voice.gender === 'female' || 
+        voice.name.toLowerCase().includes('zira') || // popular female voice names
+        voice.name.toLowerCase().includes('susan') ||
+        voice.name.toLowerCase().includes('linda')
+      );
+      setVoices(femaleVoices);
+      if (femaleVoices.length > 0) {
+        setSelectedVoice(femaleVoices[0]);
+      }
+    };
+  
+    if (speechSynthesis.onvoiceschanged !== undefined) {
+      speechSynthesis.onvoiceschanged = loadVoices;
+    }
+    loadVoices();
+  }, []);
+  
 
   useEffect(() => {
     const currentQuiz = quizData[levelId];
@@ -54,6 +86,32 @@ const QuizPage = () => {
     setCurrentQuestionIndex(0);
     setQuestionAnswered(false);
   };
+
+  const handleListen = () => {
+    if (!question) return;
+    
+    const utterance = new SpeechSynthesisUtterance(`${question.question}. Options: ${question.options.join(", ")}`);
+    utterance.lang = 'en-NG'; // Nigerian English if available
+    if (selectedVoice) {
+      utterance.voice = selectedVoice;
+    }
+  
+    utterance.onstart = () => {
+      setIsSpeaking(true);
+      setIsPaused(false);
+    };
+  
+    utterance.onend = () => {
+      setIsSpeaking(false);
+      setIsPaused(false);
+    };
+  
+    speechSynthesis.speak(utterance);
+  };
+  
+  
+  
+  
 
   const handleOptionSelect = (index) => {
     setSelectedOption(index);
@@ -216,6 +274,60 @@ const QuizPage = () => {
         ) : null}
       </div>
 
+      {/* 🔥 Action Bar */}
+ <div style={{
+  backgroundColor: '#ffccf9',
+  padding: '10px',
+  borderRadius: '12px',
+  marginBottom: '20px',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  gap: '10px'
+}}>
+  <button 
+    onClick={handleListen}
+    style={{
+      backgroundColor: '#ff69b4',
+      border: 'none',
+      padding: '10px 20px',
+      borderRadius: '20px',
+      color: 'white',
+      fontWeight: 'bold',
+      cursor: 'pointer'
+    }}
+  >
+    🎧 Listen to Question
+  </button>
+  {isSpeaking && (
+  <button
+    onClick={() => {
+      if (speechSynthesis.speaking && !speechSynthesis.paused) {
+        speechSynthesis.pause();
+        setIsPaused(true);
+      } else if (speechSynthesis.paused) {
+        speechSynthesis.resume();
+        setIsPaused(false);
+      }
+    }}
+    style={{
+      marginLeft: '10px',
+      backgroundColor: isPaused ? '#4CAF50' : '#f44336',
+      color: 'white',
+      padding: '5px 10px',
+      borderRadius: '5px',
+      border: 'none',
+      cursor: 'pointer'
+    }}
+  >
+    {isPaused ? 'Resume' : 'Pause'}
+  </button>
+)}
+
+</div>
+
+
+
       {/* Finish Quiz Button */}
       {currentQuestionIndex === quiz.questions[language].length - 1 && !quizFinished && (
         <div className="finish-button">
@@ -237,8 +349,11 @@ const QuizPage = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+
     </div>
   );
 };
+
+ 
 
 export default QuizPage;

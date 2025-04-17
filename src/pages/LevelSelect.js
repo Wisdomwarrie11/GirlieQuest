@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/LevelSelect.css';
+import MenstrualBot from '../pages/MenstrualBot';
+import InviteFriend from '../pages/InviteFriend';
 
 const levels = [
   { id: 1, name: 'Miss Clarity', topic: 'Improper Abortion' },
@@ -77,6 +79,10 @@ const LevelSelect = () => {
               </div>
             ))}
           </div>
+
+          <MenstrualBot />
+<InviteFriend />
+
         </>
       )}
     </div>
