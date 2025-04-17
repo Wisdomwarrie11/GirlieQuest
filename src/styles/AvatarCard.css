@@ -5,14 +5,17 @@
   margin-bottom: 2rem;
   flex-wrap: wrap;
   margin-right: 15px;
+
 }
 
 .avatar-card {
   border: 2px solid #ccc;
   border-radius: 20px;
   padding: 12px;
+  padding-left: 20px;
+
   cursor: pointer;
-  box-shadow: 0 0 8px #ccc;
+   box-shadow: 0 0 8px #ccc;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 150px;
   height: 150px;

@@ -16,7 +16,7 @@ const AvatarSetup = () => {
     { id: 1, src: avatar1 },
     { id: 2, src: avatar2 },
     { id: 3, src: avatar3 },
-    { id: 1, src: avatar4 },
+    { id: 4, src: avatar4 },
   ];
 
   const nigerianStates = [
