@@ -139,7 +139,7 @@ const QuizPage = () => {
   // Congratulatory message based on the selected language
   const congratsMessage = language === 'english' 
     ? "You got all the questions correct! You've earned a prize. Redeem a pack of Vivo sanitary pad from Livewell Clinic with the voucher code; 1298AF2."
-    : "You don do am! You answer all di questions correct! You don win something. collect one pack of Vivo sanitary pad for Livewell Clinic with this voucher code; 1298AF2..";
+    : "You don do am! You answer all di questions correct! You don win one pack of Vivo sanitary pad. Collect am for Livewell Clinic with this voucher code; 1298AF2..";
 
   return (
     <div className="quiz-container">
