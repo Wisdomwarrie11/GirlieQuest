@@ -1,9 +1,10 @@
 .avatar-gallery {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 5rem;
   margin-bottom: 2rem;
   flex-wrap: wrap;
+  margin-right: 15px;
 }
 
 .avatar-card {
