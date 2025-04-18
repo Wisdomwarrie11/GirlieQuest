@@ -55,7 +55,7 @@ const LevelSelect = () => {
         <>
           <div className="text-center mb-4">
             <img src={profile.avatarSrc} alt="avatar" width="150px" height= "150px" />
-            <h4 style={{fontFamily: 'sans-serif'}} className="fw-bold mt-2"> Hi my name is {profile.name}💖<br /> from {profile.state} State. </h4>
+            <h4 style={{fontFamily: 'sans-serif'}} className="fw-bold mt-2"> Hi, my name is {profile.name}💖<br /> from {profile.state} State. </h4>
             <p style={{color: 'black'}} className="text-muted">Total Score: ⭐ {totalScore} / {levels.length * 10}</p>
           </div>
 
