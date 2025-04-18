@@ -51,7 +51,7 @@ const AvatarSetup = () => {
   return (
     <div style={{fontFamily: 'sans-serif'}} className="avatar-setup-wrapper">
       <div className="setup-header text-center">
-       <strong> <h1 className='fw-bold' style={{fontFamily: 'sans-serif'}}>🎀 Welcome to GirlieQuest 🎀</h1></strong>
+       <strong> <h1 className='fw-bold' style={{fontFamily: 'sans-serif'}}>🎀GirlieQuest 🎀</h1></strong>
         <p className='fw-bold' style={{fontFamily: 'sans-serif'}}>Choose your Girlie and name her to begin your Quest!</p>
       </div>
 
