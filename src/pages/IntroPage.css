@@ -31,8 +31,8 @@
   }
   
   .start-button {
-    background-color: #ff69b4;
-    color: white;
+    background-color: #f6b7d6;
+    color: purple;
     padding: 0.8rem 2rem;
     font-size: 1.2rem;
     border: none;
@@ -41,10 +41,12 @@
     font-weight: bold;
     transition: 0.3s;
     margin-top: 300px;
+    opacity: 0.7;
+    
   }
   
   .start-button:hover {
-    background-color: #e91e63;
+    background-color: #eb86a8;
   }
   
   .loading-bar {
@@ -60,7 +62,7 @@
   .bar-fill {
     height: 100%;
     width: 100%;
-    background: #ff69b4;
+    background: #f3bad7;
     animation: fillBar 2.5s linear forwards;
   }
   
