@@ -61,7 +61,8 @@ const MenstrualBot = () => {
         <h2 style={{
           color: '#c062df',
           marginBottom: '20px',
-          fontWeight: '700'
+          fontWeight: '700',
+        fontFamily: 'sans-serif' 
         }}>
           🩷 Menstrual Period Calculator
         </h2>

@@ -5,16 +5,16 @@ import MenstrualBot from '../pages/MenstrualBot';
 import InviteFriend from '../pages/InviteFriend';
 
 const levels = [
-  { id: 1, name: 'Miss Clarity', topic: 'Improper Abortion' },
-  { id: 2, name: 'Lady Secure', topic: 'Contraceptive Use' },
-  { id: 3, name: 'Queen Purity', topic: 'Sexual Abstinence' },
-  { id: 4, name: 'Bold Bella', topic: 'Gender-Based Violence' },
-  { id: 5, name: 'Fierce Faith', topic: 'Sexual Abuse Awareness' },
-  { id: 6, name: 'Smart Shola', topic: 'Period & Puberty' },
-  { id: 7, name: 'Safe Simi', topic: 'Consent & Boundaries' },
-  { id: 8, name: 'Caring Chioma', topic: 'Relationships' },
-  { id: 9, name: 'Bright Becky', topic: 'Peer Pressure' },
-  { id: 10, name: 'Confident Clara', topic: 'SRH Self-Advocacy' },
+  { id: 1, name: 'Strength', topic: 'Unsafe Abortion' },
+  { id: 2, name: 'Beauty', topic: 'Contraceptive Use' },
+  { id: 3, name: 'Purity', topic: 'Sexual Abstinence' },
+  { id: 4, name: 'Bold', topic: 'Gender-Based Violence' },
+  { id: 5, name: 'Faith', topic: 'Sexual Abuse Awareness' },
+  { id: 6, name: 'Smart', topic: 'Period & Puberty' },
+  { id: 7, name: 'Adorable', topic: 'Consent & Boundaries' },
+  { id: 8, name: 'Caring', topic: 'Relationships' },
+  { id: 9, name: 'Bright', topic: 'Peer Pressure' },
+  { id: 10, name: 'Confident', topic: 'SRH Self-Advocacy' },
 ];
 
 const LevelSelect = () => {
@@ -55,11 +55,11 @@ const LevelSelect = () => {
         <>
           <div className="text-center mb-4">
             <img src={profile.avatarSrc} alt="avatar" width="150px" height= "150px" />
-            <h4 style={{fontFamily: 'sans-serif'}} className="fw-bold mt-2"> My name is {profile.name}💖<br /> I am from {profile.state}</h4>
+            <h4 style={{fontFamily: 'sans-serif'}} className="fw-bold mt-2"> Hi my name is {profile.name}💖<br /> from {profile.state} State. </h4>
             <p style={{color: 'black'}} className="text-muted">Total Score: ⭐ {totalScore} / {levels.length * 10}</p>
           </div>
 
-          <h3 style={{ fontFamily: 'sans-serif'}} className="fw-bold text-center mb-3">Choose a Girlie Level</h3>
+          <h3 style={{ fontFamily: 'sans-serif'}} className="fw-bold text-center mb-3">Welcome {profile.name}.You can now start your quest</h3>
 
           <div className="row">
             {levels.map((level) => (
