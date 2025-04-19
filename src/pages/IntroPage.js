@@ -24,6 +24,7 @@ const IntroPage = () => {
     <div className="intro-page">
       <div className="overlay">
         <div className="loading-container">
+          <h2 style={{color: ' rgb(197, 9, 97)'}}>Learn and win</h2>
           <div className="loading-bar" style={{ width: `${progress}%` }}></div>
         </div>
       </div>

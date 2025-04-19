@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import FloatingCTA from './FloatingCTA';
 
 const MenstrualBot = () => {
   const [lmpDate, setLmpDate] = useState('');
@@ -151,6 +152,7 @@ const MenstrualBot = () => {
           </div>
         )}
       </div>
+      <FloatingCTA/>
     </div>
   );
 };

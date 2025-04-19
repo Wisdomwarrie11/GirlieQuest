@@ -6,6 +6,8 @@ import avatar1 from '../assets/girlie1.jpg'
 import avatar2 from '../assets/beauty.jpg'
 import avatar3 from '../assets/girlie3.jpg'; 
 import avatar4 from '../assets/girlie4.jpg'
+import FloatingCTA from './FloatingCTA';
+
 const AvatarSetup = () => {
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [avatarName, setAvatarName] = useState('');
@@ -91,6 +93,7 @@ const AvatarSetup = () => {
         </select>
         <button style={{fontFamily: 'sans-serif'}} className="fw-bold start-button">Start your quest🚀</button>
       </form>
+      <FloatingCTA/>
     </div>
   );
 };

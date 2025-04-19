@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/LevelSelect.css';
 import MenstrualBot from '../pages/MenstrualBot';
 import InviteFriend from '../pages/InviteFriend';
+import FloatingCTA from './FloatingCTA';
 
 const levels = [
   { id: 1, name: 'Miss Strength'},
@@ -11,10 +12,10 @@ const levels = [
   { id: 4, name: 'Miss Charming'},
   { id: 5, name: 'Miss Amazing'},
   { id: 6, name: 'Miss Smart'},
-  { id: 7, name: 'Miss Adorable'},
-  { id: 8, name: 'Miss Caring'},
-  { id: 9, name: 'Miss Bright'},
-  { id: 10, name: 'Miss Confident'},
+  // { id: 7, name: 'Miss Adorable'},
+  // { id: 8, name: 'Miss Caring'},
+  // { id: 9, name: 'Miss Bright'},
+  // { id: 10, name: 'Miss Confident'},
 ];
 
 const LevelSelect = () => {
@@ -147,6 +148,7 @@ const LevelSelect = () => {
               </div>
             ))}
           </div>
+          <FloatingCTA/>
 
           <InviteFriend />
         </>
