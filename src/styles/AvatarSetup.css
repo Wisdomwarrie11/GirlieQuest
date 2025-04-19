@@ -1,5 +1,5 @@
 .avatar-setup-wrapper {
-  background: linear-gradient(135deg, #ffe0f0, #ffe6fb);
+  background-image: url('../assets/pink1.jpg'); 
   min-height: 100vh;
   padding: 2rem;
   font-family: 'Comic Sans MS', cursive, sans-serif;
@@ -10,12 +10,12 @@
 
 .setup-header h1 {
   font-size: 2.5rem;
-  color: #d63384;
+  color:  rgb(197, 9, 97);
 }
 
 .setup-header p {
   font-size: 1.1rem;
-  color: #555;
+  color:  rgb(197, 9, 97);
   margin-bottom: 2rem;
 }
 
@@ -44,7 +44,7 @@
 }
 
 .start-button {
-  background-color: #d63384;
+  background-color:rgb(197, 9, 97);;
   color: white;
   padding: 0.7rem 1.5rem;
   border: none;
@@ -56,5 +56,5 @@
 
 .start-button:hover {
   transform: scale(1.05);
-  background-color: #bf2a75;
+  background-color: rgb(197, 9, 97);;
 }

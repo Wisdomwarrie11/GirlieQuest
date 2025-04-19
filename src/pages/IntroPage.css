@@ -1,73 +1,55 @@
-.intro-container {
-    background-image: url('../assets/GirlieQuest.png'); 
+.intro-page {
+    background-image: url('../assets/GirlieQuest.png'); /* Replace with your actual path */
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
-    font-family: 'Comic Sans MS', cursive;
+  }
+  
+  /* Optional: brighten the image */
+  .intro-page::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(255, 255, 255, 0.2); /* Light overlay to brighten */
+    z-index: 1;
   }
   
   .overlay {
-    background: rgba(0, 0, 0, 0.5);
-    height: 100%;
-    width: 100%;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    position: relative;
+    z-index: 2;
+    width: 80%;
+    max-width: 500px;
     text-align: center;
-    padding: 2rem;
   }
   
-  .intro-title {
-    font-size: 3rem;
-    margin-bottom: 2rem;
-    color: #fff;
-  }
-  
-  .intro-title span {
-    color: #ff69b4;
-  }
-  
-  .start-button {
-    background-color: #f6b7d6;
-    color: purple;
-    padding: 0.8rem 2rem;
-    font-size: 1.2rem;
-    border: none;
-    border-radius: 14px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
-    margin-top: 300px;
-    opacity: 0.7;
-    
-  }
-  
-  .start-button:hover {
-    background-color: #eb86a8;
+  .loading-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin-top: 400px;
   }
   
   .loading-bar {
-    width: 80%;
-    height: 10px;
-    background: #fff;
-    border-radius: 20px;
-    overflow: hidden;
-    margin-top: 20rem;
+    height: 15px;
+    background-color:  rgb(197, 9, 97);
+    border-radius: 10px;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  .loading-text {
+    margin-top: 0.5rem;
+    font-weight: bold;
+    color: #333;
+  }
 
-  }
-  
-  .bar-fill {
-    height: 100%;
-    width: 100%;
-    background: #f3bad7;
-    animation: fillBar 2.5s linear forwards;
-  }
-  
-  @keyframes fillBar {
-    0% { width: 0%; }
-    100% { width: 100%; }
+  .test{
+    
+    color: rgb(218, 94, 152);
   }
   

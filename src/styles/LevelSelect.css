@@ -1,11 +1,12 @@
 /* LevelSelect.css */
 
 .level{
-  /* background-image: url('../assets/green.jpg'); */
  
 }
 .container {
   max-width: 960px;
+  background-image: url('../assets/pink1.jpg');
+
 }
 
 .level-card {

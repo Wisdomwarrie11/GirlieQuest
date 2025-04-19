@@ -55,11 +55,11 @@ const LevelSelect = () => {
         <>
           <div className="text-center mb-4">
             <img src={profile.avatarSrc} alt="avatar" width="150px" height= "150px" />
-            <h4 style={{fontFamily: 'sans-serif'}} className="fw-bold mt-2"> Hi, my name is {profile.name}💖<br /> from {profile.state} State. </h4>
-            <p style={{color: 'black'}} className="text-muted">Total Score: ⭐ {totalScore} / {levels.length * 10}</p>
+            <h4 style={{fontFamily: 'sans-serif', color: 'white'}} className="fw-bold mt-2"> Hi, my name is {profile.name}💖<br /> from {profile.state} State. </h4>
+            {/* <p style={{color: 'white'}} className="text-muted">Total Score: ⭐ {totalScore} / {levels.length * 10}</p> */}
           </div>
 
-          <h3 style={{ fontFamily: 'sans-serif'}} className="fw-bold text-center mb-3">Welcome {profile.name}.You can now start your quest</h3>
+          <h3 style={{ fontFamily: 'sans-serif', color: 'white'}} className="fw-bold text-center mb-3">Welcome {profile.name}. You can now start your quest</h3>
 
           <div className="row">
             {levels.map((level) => (
