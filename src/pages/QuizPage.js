@@ -26,12 +26,15 @@ const [selectedVoice, setSelectedVoice] = useState(null);
   const [isMuted, setIsMuted] = useState(false);
   const [fade, setFade] = useState(false);
   const [quizFinished, setQuizFinished] = useState(false);
-  const [showCongratsModal, setShowCongratsModal] = useState(false); // State for modal visibility
+  const [showCongratsModal, setShowCongratsModal] = useState(false); 
   const bgAudio = useRef(new Audio(bgMusic));
   const correctAudio = useRef(new Audio(correctSound));
   const wrongAudio = useRef(new Audio(wrongSound));
   const [isSpeaking, setIsSpeaking] = useState(false);
 const [isPaused, setIsPaused] = useState(false);
+const [showLoseModal, setShowLoseModal] = useState(false);
+const [questions, setQuestions] = useState([]);
+
 
   
   const currentQuestion = quizData[currentQuestionIndex];
@@ -63,11 +66,23 @@ const [isPaused, setIsPaused] = useState(false);
     }
     loadVoices();
   }, []);
+
+  function shuffleArray(array) {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  }
+  
+
+
   
 
   useEffect(() => {
     const currentQuiz = quizData[levelId];
-    if (currentQuiz) {
+   if (currentQuiz) {
       setQuiz(currentQuiz);
     } else {
       navigate('/levels');
@@ -86,6 +101,7 @@ const [isPaused, setIsPaused] = useState(false);
     setCurrentQuestionIndex(0);
     setQuestionAnswered(false);
   };
+
 
   const handleListen = () => {
     if (!question) return;
@@ -109,10 +125,6 @@ const [isPaused, setIsPaused] = useState(false);
     speechSynthesis.speak(utterance);
   };
   
-  
-  
-  
-
   const handleOptionSelect = (index) => {
     setSelectedOption(index);
     setQuestionAnswered(true);
@@ -178,15 +190,29 @@ const [isPaused, setIsPaused] = useState(false);
       setShowCongratsModal(true); 
     } else {
       setTimeout(() => {
-        alert('Oops! You didn\'t get all the answers right. Please try again from the beginning.');
+        setShowLoseModal(true);
         navigate(`/quiz/${levelId}`); 
       }, 2000);
     }
   };
 
+  const restartQuiz = () => {
+    setCurrentQuestionIndex(0);
+    setSelectedOption(null);
+    setQuestionAnswered(false);
+    setScore(0); 
+    setQuizFinished(false); 
+  };
+  
+
   const handleCloseModal = () => {
     setShowCongratsModal(false);
     navigate(`/nextLevel/${parseInt(levelId) + 1}`); 
+  };
+
+  const handleModal = () => {
+    setShowLoseModal(false);
+    
   };
 
   if (!quiz) return <div>Loading...</div>;
@@ -194,11 +220,15 @@ const [isPaused, setIsPaused] = useState(false);
   const question = quiz.questions[language][currentQuestionIndex];
   const avatar = quiz.name;
 
+  const LoseMessage = language === 'english' 
+    ? "PLEASE TRY AGAIN"
+    : "ABEG TRY AGAIN";
+
+
  
   const congratsMessage = language === 'english' 
     ? "You got all the questions correct! You've earned a prize. Redeem a pack of Vivo sanitary pad from Livewell Clinic with the voucher code; 1298AF2."
-    : "You don do am! You answer all di questions correct! You don win one pack of Vivo sanitary pad. Collect am for Livewell Clinic with this voucher code; 1298AF2..";
-
+    : "You don do am! You answer all di questions correct! You don win one pack of Vivo sanitary pad. Collect am for Livewell Clinic with this voucher code; 1298AF2.."
   return (
     <div className="quiz-container">
       {/* Navbar */}
@@ -213,6 +243,9 @@ const [isPaused, setIsPaused] = useState(false);
           <select id="language" value={language} onChange={handleLanguageChange}>
             <option value="english">English</option>
             <option value="pidgin">Pidgin</option>
+            <option value="yoruba">yoruba</option>
+            <option value="igbo">igbo</option>
+
           </select>
           {/* <button onClick={() => {
             setIsMuted(!isMuted);
@@ -251,7 +284,7 @@ const [isPaused, setIsPaused] = useState(false);
 
       {/* Question Block with Animation */}
       <div  className={`question-container ${fade ? 'fade-out' : 'fade-in'}`}>
-        <h3 style={{ fontFamily: 'sans-serif'}}>{question.question}</h3>
+        <h3 style={{ fontFamily: 'sans-serif', color: 'white'}}>{question.question}</h3>
         <div className="options">
           {question.options.map((option, index) => (
             <div
@@ -274,7 +307,7 @@ const [isPaused, setIsPaused] = useState(false);
         ) : null}
       </div>
 
-      {/* 🔥 Action Bar */}
+    {/* 🔥 Action Bar */}
  <div style={{
   backgroundColor: '#ffccf9',
   padding: '10px',
@@ -335,6 +368,24 @@ const [isPaused, setIsPaused] = useState(false);
         </div>
       )}
 
+{quizFinished && score !== question.length && (
+  <div className="restart-button" style={{ marginTop: '20px', textAlign: 'center' }}>
+    <button 
+      onClick={restartQuiz} 
+      style={{
+        backgroundColor: '#800080', 
+        color: 'white', 
+        padding: '10px 20px', 
+        borderRadius: '20px', 
+        border: 'none',
+        cursor: 'pointer'
+      }}
+    >
+      🔁 Restart Quiz
+    </button>
+  </div>
+)}
+
       {/* Congratulations Modal from react-bootstrap */}
       <Modal show={showCongratsModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
@@ -348,6 +399,15 @@ const [isPaused, setIsPaused] = useState(false);
             Proceed to Next Level
           </Button>
         </Modal.Footer>
+      </Modal>
+
+      <Modal show={showLoseModal} onHide={handleModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>OOOOPS! YOU HAVE {score}💎</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>{LoseMessage}</p> {/* Dynamic message */}
+        </Modal.Body>
       </Modal>
 
     </div>

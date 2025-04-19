@@ -16,7 +16,7 @@ const InviteFriend = () => {
       marginTop: '30px',
       textAlign: 'center'
     }}>
-      <h4>💌 Invite a Friend & Earn Points!</h4>
+      <h4 style={{ fontFamily: 'sans-serif'}}>💌 Invite a Friend & Earn Points!</h4>
       <p>Share with your girls and get bonus points when they join!</p>
       
       <button

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './IntroPage.css'; // We’ll handle styling there
+import './IntroPage.css';  
 
 const IntroPage = () => {
   const [progress, setProgress] = useState(0);
