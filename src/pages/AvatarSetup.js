@@ -56,7 +56,7 @@ const AvatarSetup = () => {
 
       <div className="avatar-gallery">
         {avatars.map((avatar) => (
-          <div className="col-4 col-md-2" key={avatar.id}>
+          <div style={{marginRight: '30px'}} className="col-4 col-md-2" key={avatar.id}>
 <AvatarCard
             
             id={avatar.id}
