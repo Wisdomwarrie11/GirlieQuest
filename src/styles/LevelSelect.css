@@ -99,7 +99,7 @@ h4 {
     width: 0;
   }
   to {
-    width: 100%;
+    width: 50%;
   }
 }
 
@@ -109,3 +109,29 @@ h4 {
   }
 }
 
+.typing-text1 {
+  font-family: 'sans-serif';
+  font-weight: bold;
+  color: white;
+  width: fit-content;
+  margin: 0 auto;
+  border-right: 2px solid white;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 4s steps(40, end);
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 50%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}

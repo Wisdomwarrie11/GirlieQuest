@@ -24,6 +24,10 @@ const LevelSelect = () => {
   const [scores, setScores] = useState({});
   const [totalScore, setTotalScore] = useState(0);
 
+  const [text1, setText1] = useState('');
+  const [text2, setText2] = useState('');
+  const [typingDone, setTypingDone] = useState(false);
+
   useEffect(() => {
     const savedProfile = JSON.parse(localStorage.getItem('girlieProfile'));
     const progress = JSON.parse(localStorage.getItem('girlieProgress')) || [1];
@@ -33,49 +37,75 @@ const LevelSelect = () => {
       navigate('/');
     } else {
       setProfile(savedProfile);
+
       // Voice reading
-const message = `Welcome ${savedProfile.name}. You can now start your quest`;
+      const message = `Welcome ${savedProfile.name}. You can now start your quest`;
 
-const synth = window.speechSynthesis;
-let selectedVoice;
+      const synth = window.speechSynthesis;
+      let selectedVoice;
 
-const speak = () => {
-  const utterance = new SpeechSynthesisUtterance(message);
-  const voices = synth.getVoices();
+      const speak = () => {
+        const utterance = new SpeechSynthesisUtterance(message);
+        const voices = synth.getVoices();
 
-  // Try to pick a feminine English voice
-  selectedVoice = voices.find(voice =>
-    voice.name.toLowerCase().includes('female') ||
-    voice.name.toLowerCase().includes('woman') ||
-    voice.name.toLowerCase().includes('samantha') || // macOS voice
-    voice.name.toLowerCase().includes('zira') // Windows voice
-  );
+        selectedVoice = voices.find(voice =>
+          voice.name.toLowerCase().includes('female') ||
+          voice.name.toLowerCase().includes('woman') ||
+          voice.name.toLowerCase().includes('samantha') ||
+          voice.name.toLowerCase().includes('zira')
+        );
 
-  if (selectedVoice) {
-    utterance.voice = selectedVoice;
-  }
+        if (selectedVoice) {
+          utterance.voice = selectedVoice;
+        }
 
-  utterance.pitch = 1.2;
-  utterance.rate = 1;
-  synth.speak(utterance);
-};
+        utterance.pitch = 1.2;
+        utterance.rate = 1;
+        synth.speak(utterance);
+      };
 
-// Some browsers delay voice availability, so wait a bit
-if (synth.onvoiceschanged !== undefined) {
-  synth.onvoiceschanged = () => {
-    speak();
-  };
-} else {
-  speak();
-}
+      if (synth.onvoiceschanged !== undefined) {
+        synth.onvoiceschanged = () => {
+          speak();
+        };
+      } else {
+        speak();
+      }
+
+      // Typing first line
+      let i = 0;
+      const textLine1 = `WWelcome ${savedProfile.name}!`;
+      const typeText1 = setInterval(() => {
+        setText1(prev => prev + textLine1.charAt(i));
+        i++;
+        if (i === textLine1.length) {
+          clearInterval(typeText1);
+          setTypingDone(true);
+        }
+      }, 100);
 
       setUnlockedLevels(progress);
       setScores(savedScores);
-
       const total = Object.values(savedScores).reduce((acc, score) => acc + score, 0);
       setTotalScore(total);
     }
   }, []);
+
+  useEffect(() => {
+    if (!typingDone) return;
+
+    const textLine2 = 'YYou can now start your quest.';
+    let j = 0;
+    const typeText2 = setInterval(() => {
+      setText2(prev => prev + textLine2.charAt(j));
+      j++;
+      if (j === textLine2.length) {
+        clearInterval(typeText2);
+      }
+    }, 50);
+
+    return () => clearInterval(typeText2);
+  }, [typingDone]);
 
   const handleLevelClick = (levelId) => {
     if (unlockedLevels.includes(levelId)) {
@@ -86,16 +116,19 @@ if (synth.onvoiceschanged !== undefined) {
   };
 
   return (
-    <div  style={{paddingTop: '100px', paddingBottom: '100px', color: 'black', fontFamily: 'sans-serif'}} className="avatar-setup-wrapper mt-4 level">
+    <div style={{ paddingTop: '100px', paddingBottom: '100px', color: 'black', fontFamily: 'sans-serif' }} className="avatar-setup-wrapper mt-4 level">
       {profile && (
         <>
           <div className="text-center mb-4">
-            <img src={profile.avatarSrc} alt="avatar" width="150px" height= "150px" />
-            <h4 style={{fontFamily: 'sans-serif', color: 'white'}} className="fw-bold mt-2"> Hi, my name is {profile.name}💖<br /> from {profile.state} State. </h4>
-            {/* <p style={{color: 'white'}} className="text-muted">Total Score: ⭐ {totalScore} / {levels.length * 10}</p> */}
+            <img src={profile.avatarSrc} alt="avatar" width="150px" height="150px" />
+            <h4 style={{ fontFamily: 'sans-serif', color: 'white' }} className="fw-bold mt-2">
+              Hi, my name is {profile.name}💖<br /> from {profile.state} State.
+            </h4>
           </div>
 
-          <h3 style={{ fontFamily: 'sans-serif', color: 'white'}} className="fw-bold typing-text text-center mb-3">Welcome {profile.name}. Please start your quest</h3>
+          {/* Typing Texts */}
+          <h3 style={{ fontFamily: 'sans-serif', color: 'white' }} className="fw-bold text-center mb-3">{text1}</h3>
+          <h4 style={{ fontFamily: 'sans-serif', color: 'white' }} className="fw-bold text-center mb-3">{text2}</h4>
 
           <div className="row">
             {levels.map((level) => (
@@ -115,8 +148,7 @@ if (synth.onvoiceschanged !== undefined) {
             ))}
           </div>
 
-<InviteFriend />
-
+          <InviteFriend />
         </>
       )}
     </div>

@@ -1,6 +1,6 @@
 .intro-page {
-    background-image: url('../assets/GirlieQuest.png'); /* Replace with your actual path */
-    background-size: cover;
+    background-image: url('../assets/GirlieQuest.png'); 
+    background-size:contain;
     background-position: center;
     background-repeat: no-repeat;
     min-height: 100vh;
@@ -9,15 +9,7 @@
     justify-content: center;
     position: relative;
   }
-  
-  /* Optional: brighten the image */
-  .intro-page::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-color: rgba(255, 255, 255, 0.2); /* Light overlay to brighten */
-    z-index: 1;
-  }
+ 
   
   .overlay {
     position: relative;
