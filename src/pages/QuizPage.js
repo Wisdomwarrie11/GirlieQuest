@@ -205,10 +205,10 @@ const [isPaused, setIsPaused] = useState(false);
 
       <div className="quiz-navbar d-flex justify-content-between align-items-center mb-4">
         <div>
-          <button  onClick={callAFriend} disabled={!lifelines.callAFriend}>Hint</button>
-          <button style={{marginTop: '20px'}}  onClick={useFiftyFifty} disabled={!lifelines.fiftyFifty}> 50/50</button>
+          <button style={{ backgroundColor: '#800080', padding: '5px'}}  onClick={callAFriend} disabled={!lifelines.callAFriend}>Hint</button>
+          <button style={{marginTop: '20px', padding: '5px', backgroundColor: '#800080'}}  onClick={useFiftyFifty} disabled={!lifelines.fiftyFifty}> 50/50</button>
         </div>
-        <div style={{marginRight: '20px'}}> {score}⭐</div>
+        <div style={{marginRight: '20px'}}> {score}💎</div>
         <div className="d-flex align-items-center gap-2">
           <select id="language" value={language} onChange={handleLanguageChange}>
             <option value="english">English</option>
@@ -288,7 +288,7 @@ const [isPaused, setIsPaused] = useState(false);
   <button 
     onClick={handleListen}
     style={{
-      backgroundColor: '#ff69b4',
+      backgroundColor: '#800080',
       border: 'none',
       padding: '10px 20px',
       borderRadius: '20px',
@@ -312,7 +312,7 @@ const [isPaused, setIsPaused] = useState(false);
     }}
     style={{
       marginLeft: '10px',
-      backgroundColor: isPaused ? '#4CAF50' : '#f44336',
+      backgroundColor: isPaused ? '#800080' : '#800080',
       color: 'white',
       padding: '5px 10px',
       borderRadius: '5px',

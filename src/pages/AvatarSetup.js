@@ -3,7 +3,7 @@ import AvatarCard from '../components/AvatarCard';
 import { useNavigate } from 'react-router-dom';
 import '../styles/AvatarSetup.css';
 import avatar1 from '../assets/girlie1.jpg'
-import avatar2 from '../assets/girlie2.jpg'
+import avatar2 from '../assets/beauty.jpg'
 import avatar3 from '../assets/girlie3.jpg'; 
 import avatar4 from '../assets/girlie4.jpg'
 const AvatarSetup = () => {
@@ -51,7 +51,7 @@ const AvatarSetup = () => {
   return (
     <div style={{fontFamily: 'sans-serif'}} className="avatar-setup-wrapper">
       <div className="setup-header text-center">
-        <h1 className='fw-bold' style={{fontFamily: 'sans-serif', color: ' rgb(197, 9, 97)', marginTop : '50px'}}>Choose your Girlie</h1>
+        <h1 className='fw-bold' style={{fontFamily: 'sans-serif', color: 'white', marginTop : '50px', marginRight: '70px'}}>Choose your Girlie</h1>
       </div>
 
       <div className="avatar-gallery">

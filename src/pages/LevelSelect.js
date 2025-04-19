@@ -5,16 +5,16 @@ import MenstrualBot from '../pages/MenstrualBot';
 import InviteFriend from '../pages/InviteFriend';
 
 const levels = [
-  { id: 1, name: 'Strength', topic: 'Unsafe Abortion' },
-  { id: 2, name: 'Beauty', topic: 'Contraceptive Use' },
-  { id: 3, name: 'Purity', topic: 'Sexual Abstinence' },
-  { id: 4, name: 'Bold', topic: 'Gender-Based Violence' },
-  { id: 5, name: 'Faith', topic: 'Sexual Abuse Awareness' },
-  { id: 6, name: 'Smart', topic: 'Period & Puberty' },
-  { id: 7, name: 'Adorable', topic: 'Consent & Boundaries' },
-  { id: 8, name: 'Caring', topic: 'Relationships' },
-  { id: 9, name: 'Bright', topic: 'Peer Pressure' },
-  { id: 10, name: 'Confident', topic: 'SRH Self-Advocacy' },
+  { id: 1, name: 'Miss Strength'},
+  { id: 2, name: 'Miss Beauty'},
+  { id: 3, name: 'Miss Purity'},
+  { id: 4, name: 'Miss Charming'},
+  { id: 5, name: 'Miss Amazing'},
+  { id: 6, name: 'Miss Smart'},
+  { id: 7, name: 'Miss Adorable'},
+  { id: 8, name: 'Miss Caring'},
+  { id: 9, name: 'Miss Bright'},
+  { id: 10, name: 'Miss Confident'},
 ];
 
 const LevelSelect = () => {
@@ -33,6 +33,42 @@ const LevelSelect = () => {
       navigate('/');
     } else {
       setProfile(savedProfile);
+      // Voice reading
+const message = `Welcome ${savedProfile.name}. You can now start your quest`;
+
+const synth = window.speechSynthesis;
+let selectedVoice;
+
+const speak = () => {
+  const utterance = new SpeechSynthesisUtterance(message);
+  const voices = synth.getVoices();
+
+  // Try to pick a feminine English voice
+  selectedVoice = voices.find(voice =>
+    voice.name.toLowerCase().includes('female') ||
+    voice.name.toLowerCase().includes('woman') ||
+    voice.name.toLowerCase().includes('samantha') || // macOS voice
+    voice.name.toLowerCase().includes('zira') // Windows voice
+  );
+
+  if (selectedVoice) {
+    utterance.voice = selectedVoice;
+  }
+
+  utterance.pitch = 1.2;
+  utterance.rate = 1;
+  synth.speak(utterance);
+};
+
+// Some browsers delay voice availability, so wait a bit
+if (synth.onvoiceschanged !== undefined) {
+  synth.onvoiceschanged = () => {
+    speak();
+  };
+} else {
+  speak();
+}
+
       setUnlockedLevels(progress);
       setScores(savedScores);
 
@@ -50,7 +86,7 @@ const LevelSelect = () => {
   };
 
   return (
-    <div  style={{paddingTop: '100px', paddingBottom: '100px', color: 'black', fontFamily: 'sans-serif'}} className="container mt-4 level">
+    <div  style={{paddingTop: '100px', paddingBottom: '100px', color: 'black', fontFamily: 'sans-serif'}} className="avatar-setup-wrapper mt-4 level">
       {profile && (
         <>
           <div className="text-center mb-4">
@@ -59,7 +95,7 @@ const LevelSelect = () => {
             {/* <p style={{color: 'white'}} className="text-muted">Total Score: ⭐ {totalScore} / {levels.length * 10}</p> */}
           </div>
 
-          <h3 style={{ fontFamily: 'sans-serif', color: 'white'}} className="fw-bold text-center mb-3">Welcome {profile.name}. You can now start your quest</h3>
+          <h3 style={{ fontFamily: 'sans-serif', color: 'white'}} className="fw-bold typing-text text-center mb-3">Welcome {profile.name}. Please start your quest</h3>
 
           <div className="row">
             {levels.map((level) => (
@@ -69,7 +105,6 @@ const LevelSelect = () => {
                   onClick={() => handleLevelClick(level.id)}
                 >
                   <h5>{level.name}</h5>
-                  <p>{level.topic}</p>
                   {unlockedLevels.includes(level.id) ? (
                     <p className="score">⭐ {scores[level.id] || 0}/10</p>
                   ) : (

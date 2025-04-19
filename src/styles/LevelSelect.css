@@ -5,7 +5,6 @@
 }
 .container {
   max-width: 960px;
-  background-image: url('../assets/pink1.jpg');
 
 }
 
@@ -82,3 +81,31 @@ h4 {
     padding: 1rem;
   }
 }
+
+.typing-text {
+  font-family: 'sans-serif';
+  font-weight: bold;
+  color: white;
+  width: fit-content;
+  margin: 0 auto;
+  border-right: 2px solid white;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 4s steps(40, end), blink 0.8s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
