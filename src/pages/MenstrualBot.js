@@ -32,11 +32,21 @@ const MenstrualBot = () => {
 
     if (language === 'pidgin') {
       return `👑 Your next period fit start around ${nextPeriodDate}. Make you ready, ok? 💖`;
-    } else {
+    } 
+    else if (language === 'yoruba'){
+      return `Àkókò ìsìn rẹ tó kàn máa bẹ̀rẹ̀ ní ${nextPeriodDate}. Ṣe tán ṣetán!`;
+    }
+    else if (language === 'igbo'){
+      return `Oge nsọ gị ọzọ ga-amalite na ${nextPeriodDate}. Nọgide na-adị njikere!`;
+    }
+    else {
       return `🌸 Your next period will likely start on ${nextPeriodDate}. Stay prepared!`;
     }
   };
 
+
+
+  
   return (
     <div style={{
       background: 'linear-gradient(135deg, #f9d7f5, #c062df)',
@@ -101,6 +111,8 @@ const MenstrualBot = () => {
           >
             <option value="english">English</option>
             <option value="pidgin">Pidgin</option>
+            <option value="yoruba">Yoruba</option>
+
           </select>
         </div>
 
