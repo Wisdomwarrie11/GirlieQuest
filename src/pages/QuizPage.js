@@ -301,7 +301,7 @@ const [questions, setQuestions] = useState([]);
       </div>
 
       {/* Next Button */}
-      <div className="next-button">
+      <div style={{backgroundColor: 'white', marginBottom: '5px'}} className="next-button">
         {questionAnswered && currentQuestionIndex < quiz.questions[language].length - 1 ? (
           <button onClick={nextQuestion}>Next Question</button>
         ) : null}

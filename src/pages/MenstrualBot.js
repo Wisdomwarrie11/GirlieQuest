@@ -112,6 +112,7 @@ const MenstrualBot = () => {
             <option value="english">English</option>
             <option value="pidgin">Pidgin</option>
             <option value="yoruba">Yoruba</option>
+            <option value="igbo">igbo</option>
 
           </select>
         </div>
