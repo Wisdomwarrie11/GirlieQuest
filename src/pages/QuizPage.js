@@ -403,7 +403,7 @@ const [questions, setQuestions] = useState([]);
 
       <Modal show={showLoseModal} onHide={handleModal}>
         <Modal.Header closeButton>
-          <Modal.Title>OOOOPS! YOU HAVE {score}💎</Modal.Title>
+          <Modal.Title>OOOOPS! YOU HAVE {score}💎. And you need 10💎 </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p>{LoseMessage}</p> {/* Dynamic message */}
