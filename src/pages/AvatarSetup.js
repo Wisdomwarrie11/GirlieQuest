@@ -93,7 +93,6 @@ const AvatarSetup = () => {
         </select>
         <button style={{fontFamily: 'sans-serif'}} className="fw-bold start-button">Start your quest🚀</button>
       </form>
-      <FloatingCTA/>
     </div>
   );
 };
