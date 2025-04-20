@@ -5,12 +5,12 @@ export const quizData = {
     questions: {
       english: [
         {
-          question: "You are 16 years old and just had unprotected sex. What should you do next?",
+          question: "Jennifer is a young girl and just had unprotected sex. As her friend, what will you advise she does next?",
           options: [
-            "Wait and see if you miss your period",
-            "Go to a health center for emergency contraception",
-            "Tell your friend and forget about it",
-            "Take a pregnancy test after 2 weeks"
+            "Wait and see if she miss her period",
+            "Tell her to go to a health center for emergency contraception",
+            "Tell her to forget about it",
+            "Tell her to take a pregnancy test after 2 weeks to confirm"
           ],
           answer: 1,
           hint: "Emergency contraception is most effective within 72 hours."
@@ -119,12 +119,12 @@ export const quizData = {
       
       pidgin: [
         {
-          question: "You be 16 years old and you don do unprotected sex. Wetin you go do?",
+          question: "Jennifer be young girl and she don do sex without protection. As her padi, Wetin you go tell am make she do?",
           options: [
-            "Wait make you see if your period go miss",
-            "Go health center for emergency contraception",
+            "Tell am make she Wait make see if her period go miss",
+            "Tell am make she go health center for emergency contraception",
             "Tell your friend make she forget am",
-            "Take pregnancy test after 2 weeks"
+            "Tell am make she take pregnancy test after 2 weeks to confirm"
           ],
           answer: 1,
           hint: "Emergency contraception dey work well if you go health center within 72 hours."
@@ -232,12 +232,12 @@ export const quizData = {
 
       yoruba: [
         {
-        question: "O jẹ ọmọ ọdun mẹrindinlogun (16) ati pe o ti ni ibalopọ lai lo aabo. Kini o yẹ ki o ṣe nigbamii?",
+        question: "Jennifer jẹ ọmọbirin kekere, o ṣẹṣẹ ni ibalopọ laisi aabo. Gẹ́gẹ́ bí ọrẹ rẹ, kí ni ìmòràn tí iwọ yóò fún un?",
         options: [
-        "Duro ki o wo boya o padanu akoko oyun rẹ",
-        "Lọ si ile-iwosan fun oogun pajawiri lati dena oyun",
-        "So fun ọrẹ rẹ ki o gbagbe e",
-        "Ya idanwo oyun lẹyin ọsẹ meji"
+          'Dúró kí o rí bóyá yóò padanu àkókò ìsọdùn rẹ',
+          'Sọ fún un kí o lọ sí ilé ìwòsàn fún àbójútó àkúnya pajawiri',
+          'Sọ fún un kí o gbàgbé e',
+          'Sọ fún un kí o ṣe àyẹ̀wò oyun lẹ́yìn ọ̀sẹ̀ méjì',
         ],
         answer: 1,
         hint: "Oogun pajawiri lati dena oyun munadoko julọ laarin wakati 72."
@@ -345,12 +345,12 @@ export const quizData = {
         
         igbo: [
 {
-question: "Ị dị afọ iri na isii (16) ma ị nwere mmekọahụ na-enweghị nchekwa. Gịnị ka ị ga-eme ọzọ?",
+question: "Jennifer bụ nwata nwanyị, o mechara nwee mmekọahụ na-enweghị nchebe. Dị ka enyi ya, gịnị ka ị ga-advaisị ya ime mgbe ahụ?",
 options: [
-"Chere hụ ma ọ bụrụ na ị gaghị enweta oge nsọ gị",
-"Gaa ụlọ ọgwụ ka ị nweta ọgwụ mberede igbochi ime ime",
-"Gwa enyi gị ma chefuo ya",
-"Mee ule ime ime mgbe izu abụọ gachara"
+  'Chere hụ ma o gaghi enweta oge nsọ ya',
+  'Gwa ya ka ọ gaa ebe ahụike maka ọgwụ mgbochi mberede',
+  'Gwa ya ka o chefuo ya',
+  "Gwa ya ka ọ mee ule ime ime n’ime izu abụọ",
 ],
 answer: 1,
 hint: "Ọgwụ mberede igbochi ime ime na-arụ ọrụ nke ọma n'ime awa 72."
