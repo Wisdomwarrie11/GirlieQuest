@@ -9,7 +9,7 @@ import IntroPage from './pages/IntroPage';
 
 function App() {
   return (
-    <div style={{ height: '100%'}}>
+    <div style={{backgroundColor: 'rgb(9, 1, 40)', height: '100%'}}>
    
       <Router>
       <Navbar />
