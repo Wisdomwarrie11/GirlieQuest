@@ -7,6 +7,7 @@ import correctSound from '../assets/sounds/correct.mp3';
 import wrongSound from '../assets/sounds/wrong.mp3';
 import bgMusic from '../assets/sounds/bg.mp3';
 import confetti from 'canvas-confetti';
+import RewardCelebration from './RewardCelebration';
 
 
 
@@ -26,7 +27,6 @@ const [selectedVoice, setSelectedVoice] = useState(null);
   const [isMuted, setIsMuted] = useState(false);
   const [fade, setFade] = useState(false);
   const [quizFinished, setQuizFinished] = useState(false);
-  const [showCongratsModal, setShowCongratsModal] = useState(false); 
   const bgAudio = useRef(new Audio(bgMusic));
   const correctAudio = useRef(new Audio(correctSound));
   const wrongAudio = useRef(new Audio(wrongSound));
@@ -34,6 +34,9 @@ const [selectedVoice, setSelectedVoice] = useState(null);
 const [isPaused, setIsPaused] = useState(false);
 const [showLoseModal, setShowLoseModal] = useState(false);
 const [questions, setQuestions] = useState([]);
+const [showCongratsModal, setShowCongratsModal] = useState(false);
+const [showReward, setShowReward] = useState(false); // 👈 Add this
+
 
 
   
@@ -188,6 +191,7 @@ const [questions, setQuestions] = useState([]);
     if (score === quiz.questions[language].length) {
       
       setShowCongratsModal(true); 
+      setShowReward(true);
     } else {
       setTimeout(() => {
         setShowLoseModal(true);
@@ -387,28 +391,26 @@ const [questions, setQuestions] = useState([]);
 )}
 
       {/* Congratulations Modal from react-bootstrap */}
-      <Modal show={showCongratsModal} onHide={handleCloseModal}>
-        <Modal.Header closeButton>
-          <Modal.Title>Congratulations!</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p>{congratsMessage}</p> {/* Dynamic message */}
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleCloseModal}>
-            Proceed to Next Level
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      {showCongratsModal && !showReward && (
+  <div className="congrats-box" onClick={() => setShowReward(true)}>
+    <h2>🎉 Congratulations!</h2>
+    <p>You got all the answers right!</p>
+    <p><strong>Click to reveal your reward 🎁</strong></p>
+  </div>
+)}
 
-      <Modal show={showLoseModal} onHide={handleModal}>
-        <Modal.Header closeButton>
-          <Modal.Title>OOOOPS! YOU HAVE {score}💎. And you need 10💎 </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p>{LoseMessage}</p> {/* Dynamic message */}
-        </Modal.Body>
-      </Modal>
+{showReward && (
+ <RewardCelebration
+ show={showCongratsModal}
+ onClose={() => setShowCongratsModal(false)}
+ levelId={levelId}
+ centered
+ size="lg"
+ backdrop="static"
+ className="congrats-modal animate__animated animate__bounceIn"
+/>
+
+)}
 
     </div>
   );
