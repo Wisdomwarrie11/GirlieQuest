@@ -8,12 +8,12 @@ import wrongSound from '../assets/sounds/wrong.mp3';
 import bgMusic from '../assets/sounds/bg.mp3';
 import confetti from 'canvas-confetti';
 import RewardCelebration from './RewardCelebration';
-
+import TryAgainModal from './TryAgainmModal';
 
 
 const QuizPage = () => {
   const navigate = useNavigate();
-  const [voices, setVoices] = useState([]);
+const [voices, setVoices] = useState([]);
 const [selectedVoice, setSelectedVoice] = useState(null);
   const { levelId } = useParams();
   const [quiz, setQuiz] = useState(null);
@@ -24,10 +24,10 @@ const [selectedVoice, setSelectedVoice] = useState(null);
   const [selectedOption, setSelectedOption] = useState(null);
   const [questionAnswered, setQuestionAnswered] = useState(false);
   const [profile, setProfile] = useState(null);
-  const [isMuted, setIsMuted] = useState(false);
+const [isMuted, setIsMuted] = useState(false);
   const [fade, setFade] = useState(false);
   const [quizFinished, setQuizFinished] = useState(false);
-  const bgAudio = useRef(new Audio(bgMusic));
+const bgAudio = useRef(new Audio(bgMusic));
   const correctAudio = useRef(new Audio(correctSound));
   const wrongAudio = useRef(new Audio(wrongSound));
   const [isSpeaking, setIsSpeaking] = useState(false);
@@ -35,9 +35,28 @@ const [isPaused, setIsPaused] = useState(false);
 const [showLoseModal, setShowLoseModal] = useState(false);
 const [questions, setQuestions] = useState([]);
 const [showCongratsModal, setShowCongratsModal] = useState(false);
-const [showReward, setShowReward] = useState(false); // 👈 Add this
+const [showReward, setShowReward] = useState(false); 
+const [showTryAgainModal, setShowTryAgainModal] = useState(false);
 
 
+const tryAgainMessages = {
+  english: {
+    message: "You tried your best. Don’t worry, you can try again.",
+    buttonText: "Restart Quiz"
+  },
+  pidgin: {
+    message: "You try well well. No fear, you fit try again.",
+    buttonText: "Start Again"
+  },
+  igbo: {
+    message: "I mere nke ọma. Enweghị nsogbu, ị nwere ike ịnwale ọzọ.",
+    buttonText: "Bido ọzọ"
+  },
+  yoruba: {
+    message: "O gbiyanju daradara. Maṣe yọ ara rẹ lẹnu, o le tun gbiyanju.",
+    buttonText: "Tun ṣe Igbiyanju"
+  }
+};
 
   
   const currentQuestion = quizData[currentQuestionIndex];
@@ -192,13 +211,16 @@ const [showReward, setShowReward] = useState(false); // 👈 Add this
       
       setShowCongratsModal(true); 
       setShowReward(true);
-    } else {
-      setTimeout(() => {
-        setShowLoseModal(true);
-        navigate(`/quiz/${levelId}`); 
-      }, 2000);
-    }
+    } else   {
+        setShowTryAgainModal(true);
+      }  
   };
+
+  const handleRetry = () => {
+    setScore(0);
+    setQuizFinished(false);
+    setShowTryAgainModal(false);
+    navigate(`/quiz/${levelId}`)  };
 
   const restartQuiz = () => {
     setCurrentQuestionIndex(0);
@@ -372,23 +394,8 @@ const [showReward, setShowReward] = useState(false); // 👈 Add this
         </div>
       )}
 
-{quizFinished && score !== question.length && (
-  <div className="restart-button" style={{ marginTop: '20px', textAlign: 'center' }}>
-    <button 
-      onClick={restartQuiz} 
-      style={{
-        backgroundColor: '#800080', 
-        color: 'white', 
-        padding: '10px 20px', 
-        borderRadius: '20px', 
-        border: 'none',
-        cursor: 'pointer'
-      }}
-    >
-      🔁 Restart Quiz
-    </button>
-  </div>
-)}
+
+
 
       {/* Congratulations Modal from react-bootstrap */}
       {showCongratsModal && !showReward && (
@@ -411,7 +418,15 @@ const [showReward, setShowReward] = useState(false); // 👈 Add this
  className="congrats-modal animate__animated animate__bounceIn"
 />
 
+
+
 )}
+<TryAgainModal
+        show={showTryAgainModal}
+        onClose={() => setShowTryAgainModal(false)}
+        language={language}
+        onRetry={restartQuiz}
+      />
 
     </div>
   );
