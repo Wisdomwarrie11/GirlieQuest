@@ -404,6 +404,7 @@ const [showReward, setShowReward] = useState(false); // 👈 Add this
  show={showCongratsModal}
  onClose={() => setShowCongratsModal(false)}
  levelId={levelId}
+ language={language}
  centered
  size="lg"
  backdrop="static"

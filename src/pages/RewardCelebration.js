@@ -1,3 +1,4 @@
+// RewardCelebration.js
 import { Modal, Button } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import confetti from 'canvas-confetti'; // if installed
@@ -5,10 +6,26 @@ import celebrationSound from '../assets/sounds/celebration.wav'; // optional aud
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const congratulatoryMessages = {
-  english: "Congratulations! You've won a sanitary pad with a voucher code.",
-  pidgin: "Congrats! You don win sanitary pad with voucher code.",
-  igbo: "Ekele! I meriri sanitary pad na voucher code.",
-  yoruba: "E ku odun! O ti win sanitary pad pẹlu koodu voucher.",
+  english: {
+    title: "Congratulations! You've won a sanitary pad with a voucher code 🎉",
+    voucherMessage: "🎁 Your Voucher Code: ",
+    buttonText: "Proceed to Next Level"
+  },
+  pidgin: {
+    title: "Congrats! You don win sanitary pad with voucher code! 🎉",
+    voucherMessage: "🎁 Your Voucher Code: ",
+    buttonText: "Go to Next Level"
+  },
+  igbo: {
+    title: "Ekele! I meriri sanitary pad na voucher code 🎉",
+    voucherMessage: "🎁 Koodu Voucher gị: ",
+    buttonText: "Gaa na N'ọkwa Na-esote"
+  },
+  yoruba: {
+    title: "E ku odun! O ti win sanitary pad pẹlu koodu voucher! 🎉",
+    voucherMessage: "🎁 Koodu Voucher rẹ: ",
+    buttonText: "Lọ si Ipele Tẹle"
+  }
 };
 
 const RewardCelebration = ({ show, onClose, levelId, language }) => {
@@ -16,8 +33,8 @@ const RewardCelebration = ({ show, onClose, levelId, language }) => {
   const voucherCode = 'FEMCARE2025';
   const navigate = useNavigate(); // Create navigate function
 
-  // Dynamically set the congratulatory message based on the selected language
-  const congratulatoryMessage = congratulatoryMessages[language] || congratulatoryMessages['english'];
+  // Dynamically set the congratulatory messages based on the selected language
+  const messages = congratulatoryMessages[language] || congratulatoryMessages['english'];
 
   useEffect(() => {
     if (show) {
@@ -46,9 +63,7 @@ const RewardCelebration = ({ show, onClose, levelId, language }) => {
     >
       <Modal.Body>
         <div className="text-center p-5">
-          <h2 className="fw-bold text-success">🎉 {congratulatoryMessage} 🎉</h2>
-          <p className="lead">You’ve answered all questions correctly!</p>
-          <p className="mb-4">Click the box below to reveal your reward.</p>
+          <h2 className="fw-bold text-success">{messages.title}</h2>
 
           <div
             onClick={handleVoucherReveal}
@@ -64,7 +79,7 @@ const RewardCelebration = ({ show, onClose, levelId, language }) => {
           >
             {voucherRevealed ? (
               <h4 className="text-danger">
-                🎁 Your Voucher Code: <strong>{voucherCode}</strong>
+                {messages.voucherMessage} <strong>{voucherCode}</strong>
               </h4>
             ) : (
               <h5 className="text-primary">🎁 Click to Reveal Your Gift</h5>
@@ -77,7 +92,7 @@ const RewardCelebration = ({ show, onClose, levelId, language }) => {
             size="lg"
             className="mt-4"
           >
-            Proceed to Next Level
+            {messages.buttonText}
           </Button>
         </div>
       </Modal.Body>
