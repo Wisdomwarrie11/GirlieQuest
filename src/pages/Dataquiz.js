@@ -342,41 +342,43 @@ export const quizData = {
 //         hint: "Akoko oyun jẹ adayeba. Ma ṣe ni itiju—beere fun atilẹyin ni igboya."
 //         }
 //         ],
+      ],
         
-//         igbo: [
-// {
-// question: "Jennifer bụ nwata nwanyị, o mechara nwee mmekọahụ na-enweghị nchebe. Dị ka enyi ya, gịnị ka ị ga-advaisị ya ime mgbe ahụ?",
-// options: [
-//   'Chere hụ ma o gaghi enweta oge nsọ ya',
-//   'Gwa ya ka ọ gaa ebe ahụike maka ọgwụ mgbochi mberede',
-//   'Gwa ya ka o chefuo ya',
-//   "Gwa ya ka ọ mee ule ime ime n’ime izu abụọ",
-// ],
-// answer: 1,
-// hint: "Ọgwụ mberede igbochi ime ime na-arụ ọrụ nke ọma n'ime awa 72."
-// },
-// {
-// question: "Enyi gị gwara gị na ọ na-enwe mgbu ike n’afọ na ọbara na-apụta nke ukwuu. Gịnị ka ị ga-advaisị ya?",
-// options: [
-// "Ka o zuru ike ma were ọgwụ mgbu",
-// "Ka o gaa hụ dọkịta maka nyocha",
-// "Ka o nwalee ọgwụ osisi",
-// "Ka o chefuo ya, na ọ bụ ihe nkịtị"
-// ],
-// answer: 1,
-// hint: "Mgbu ike n’afọ na ọbara na-apụta nke ukwuu nwere ike ịbụ ihe na-egosi ọrịa dị njọ."
-// },
-// {
-// question: "Ị na-eche na enyi gị ime ime ma ọ na-atụ ụjọ ịgwa ndị mụrụ ya. Gịnị ka ị ga-eme?",
-// options: [
-// "Gwa ya ka o gaa klịnikị maka nkwenye na ndụmọdụ ziri ezi",
-// "Gwa ya ka o mee ule ime ime n'ụlọ",
-// "Gwa ya ka o zoro ya ma dozie ya onwe ya",
-// "Gwa ndị mụrụ ya ka ha nyere ya aka dozie ya"
-// ],
-// answer: 0,
-// hint: "Ụmụaka na-arụ ọrụ n'ụlọ ọgwụ nwere ike inye ndụmọdụ ziri ezi na nkwado."
-// },
+        igbo: [
+{
+question: "Jennifer bụ nwata nwanyị, o mechara nwee mmekọahụ na-enweghị nchebe. Dị ka enyi ya, gịnị ka ị ga-advaisị ya ime mgbe ahụ?",
+options: [
+  'Chere hụ ma o gaghi enweta oge nsọ ya',
+  'Gwa ya ka ọ gaa ebe ahụike maka ọgwụ mgbochi mberede',
+  'Gwa ya ka o chefuo ya',
+  "Gwa ya ka ọ mee ule ime ime n’ime izu abụọ",
+],
+answer: 1,
+hint: "Ọgwụ mberede igbochi ime ime na-arụ ọrụ nke ọma n'ime awa 72."
+},
+{
+question: "Enyi gị gwara gị na ọ na-enwe mgbu ike n’afọ na ọbara na-apụta nke ukwuu. Gịnị ka ị ga-advaisị ya?",
+options: [
+"Ka o zuru ike ma were ọgwụ mgbu",
+"Ka o gaa hụ dọkịta maka nyocha",
+"Ka o nwalee ọgwụ osisi",
+"Ka o chefuo ya, na ọ bụ ihe nkịtị"
+],
+answer: 1,
+hint: "Mgbu ike n’afọ na ọbara na-apụta nke ukwuu nwere ike ịbụ ihe na-egosi ọrịa dị njọ."
+},
+{
+question: "Ị na-eche na enyi gị ime ime ma ọ na-atụ ụjọ ịgwa ndị mụrụ ya. Gịnị ka ị ga-eme?",
+options: [
+"Gwa ya ka o gaa klịnikị maka nkwenye na ndụmọdụ ziri ezi",
+"Gwa ya ka o mee ule ime ime n'ụlọ",
+"Gwa ya ka o zoro ya ma dozie ya onwe ya",
+"Gwa ndị mụrụ ya ka ha nyere ya aka dozie ya"
+],
+answer: 0,
+hint: "Ụmụaka na-arụ ọrụ n'ụlọ ọgwụ nwere ike inye ndụmọdụ ziri ezi na nkwado."
+},
+  
 // {
 // question: "Nwata nwanyị na-enwe mgbagwoju anya banyere iji ọgwụ igbochi ime ime n’ihi na ọ nụrụ akụkọ ifo. Gịnị ka ị ga-agwa ya?",
 // options: [
